@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>식품·건기식 상품기획 컨설팅 | YPMFC</title>
+  <meta name="description" content="OEM 공장 미팅부터 판매 채널 셋팅까지 CJ출신 전문가가 1:1로 함께합니다. 식품공학 전공, CJ제일제당 본사 출신, 크몽 의뢰 603건, 만족도 97%.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1C40F4;
+      --primary-dark: #1330C4;
+      --primary-light: #EBF0FF;
+      --dark: #111111;
+      --dark-2: #1E1E1E;
+      --dark-3: #2A2A2A;
+      --white: #FFFFFF;
+      --gray-bg: #F8F8F8;
+      --gray-text: #666666;
+      --gray-border: #E5E5E5;
+      --yellow: #FFD600;
+      --red-light: #FFF0F0;
+      --red: #E53E3E;
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    .navbar {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-border);
+      padding: 0 32px; height: 64px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .navbar-left { display: flex; align-items: center; gap: 14px; }
+    .navbar-logo img { height: 32px; width: auto; display: block; }
+    .navbar-logo-text { font-size: 20px; font-weight: 900; color: var(--primary); letter-spacing: -0.5px; }
+    .navbar-tagline {
+      font-size: 13px; color: var(--gray-text); font-weight: 500;
+      border-left: 1px solid var(--gray-border); padding-left: 14px;
+    }
+    @media (max-width: 640px) { .navbar-tagline { display: none; } .navbar { padding: 0 20px; } }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 10px 22px; border-radius: 8px;
+      font-family: 'Noto Sans KR', sans-serif; font-size: 14px; font-weight: 700;
+      cursor: pointer; border: none; text-decoration: none; transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); box-shadow: 0 4px 16px rgba(28,64,244,0.3); }
+    .btn-outline-white { background: var(--white); color: var(--primary); border: 2.5px solid var(--white); }
+    .btn-outline-white:hover { background: var(--primary-light); color: var(--primary); border-color: var(--primary-light); }
+    .btn-sm { padding: 8px 16px; font-size: 13px; }
+    .btn-xl { padding: 18px 48px; font-size: 18px; border-radius: 12px; }
+    .btn-full { width: 100%; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1080px; margin: 0 auto; }
+    section { padding: 88px 32px; }
+    .text-center { text-align: center; }
+
+    /* ── BADGE ── */
+    .badge {
+      display: inline-block; background: var(--primary); color: var(--white);
+      font-size: 12px; font-weight: 700; padding: 5px 14px;
+      border-radius: 100px; margin-bottom: 20px; letter-spacing: 0.5px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .s-title {
+      font-size: clamp(26px, 4.5vw, 42px); font-weight: 900; line-height: 1.25;
+      margin-bottom: 14px; color: var(--dark);
+    }
+    .s-title .accent { color: var(--primary); }
+    .s-title.white { color: var(--white); }
+    .s-title.white .accent { color: #7FA3FF; }
+    .s-sub { font-size: 16px; color: var(--gray-text); line-height: 1.75; margin-bottom: 48px; }
+
+    /* ── GRID ── */
+    .grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      section { padding: 64px 20px; }
+    }
+
+    /* ─────────────────────────────── */
+    /* SECTION 1: HERO                 */
+    /* ─────────────────────────────── */
+    .hero {
+      padding: 100px 32px 88px;
+      background: linear-gradient(150deg, #EFF3FF 0%, #FFFFFF 45%, #F5F7FF 100%);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -120px; right: -80px;
+      width: 480px; height: 480px;
+      background: radial-gradient(circle, rgba(28,64,244,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -60px; left: -60px;
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, rgba(28,64,244,0.05) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-headline {
+      font-size: clamp(34px, 6.5vw, 60px); font-weight: 900; line-height: 1.2;
+      color: var(--dark); margin-bottom: 22px; letter-spacing: -1px; position: relative;
+    }
+    .hero-sub {
+      font-size: clamp(15px, 2.2vw, 18px); color: var(--gray-text);
+      margin-bottom: 36px; line-height: 1.75; position: relative;
+    }
+    .hero-trust {
+      margin-top: 22px; font-size: 13px; color: #999;
+      display: flex; align-items: center; justify-content: center;
+      gap: 10px; flex-wrap: wrap; position: relative;
+    }
+    .trust-dot { width: 3px; height: 3px; background: #CCC; border-radius: 50%; }
+    @media (max-width: 768px) { .hero { padding: 72px 20px 64px; } }
+
+    /* ─────────────────────────────── */
+    /* SECTION 2: PAIN POINT           */
+    /* ─────────────────────────────── */
+    .pain { background: var(--dark); }
+    .pain-card {
+      background: var(--dark-2); border: 1px solid var(--dark-3);
+      border-radius: 16px; padding: 24px 28px;
+      display: flex; align-items: center; gap: 16px;
+      font-size: 15px; font-weight: 500; color: var(--white);
+    }
+    .pain-emoji { font-size: 30px; flex-shrink: 0; }
+    .pain-resolve {
+      margin-top: 40px; background: var(--primary); border-radius: 16px;
+      padding: 24px 36px; text-align: center;
+      font-size: 18px; font-weight: 700; color: var(--white);
+    }
+
+    /* ─────────────────────────────── */
+    /* SECTION 3: STATS BAR            */
+    /* ─────────────────────────────── */
+    .stats { background: var(--primary); padding: 52px 32px; }
+    .stats-row {
+      display: flex; align-items: center; justify-content: center;
+      max-width: 800px; margin: 0 auto;
+    }
+    .stat {
+      flex: 1; text-align: center; color: var(--white); padding: 0 32px;
+    }
+    .stat:not(:last-child) { border-right: 1px solid rgba(255,255,255,0.2); }
+    .stat-num { font-size: clamp(32px, 5vw, 50px); font-weight: 900; line-height: 1; margin-bottom: 8px; }
+    .stat-lbl { font-size: 14px; font-weight: 500; opacity: 0.85; }
+    @media (max-width: 768px) {
+      .stats-row { flex-direction: column; gap: 36px; }
+      .stat { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.2); padding: 0 0 36px; width: 100%; }
+      .stat:last-child { border-bottom: none; padding-bottom: 0; }
+    }
+
+    /* ─────────────────────────────── */
+    /* SECTION 4: SERVICE              */
+    /* ─────────────────────────────── */
+    .svc-card {
+      background: var(--white); border: 2px solid var(--dark);
+      border-radius: 16px; padding: 28px;
+    }
+    .svc-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: var(--primary); color: var(--white);
+      font-size: 11px; font-weight: 700; padding: 4px 12px;
+      border-radius: 100px; margin-bottom: 12px;
+    }
+    .svc-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .svc-card p { font-size: 13px; color: var(--gray-text); line-height: 1.65; }
+
+    /* ─────────────────────────────── */
+    /* SECTION 5: PROCESS              */
+    /* ─────────────────────────────── */
+    .process { background: var(--gray-bg); }
+    .timeline { position: relative; max-width: 680px; margin: 0 auto; }
+    .timeline::before {
+      content: ''; position: absolute; left: 27px; top: 8px; bottom: 8px;
+      width: 2px; background: var(--gray-border);
+    }
+    .tl-item {
+      display: flex; gap: 24px; align-items: flex-start;
+      margin-bottom: 20px; position: relative;
+    }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot {
+      width: 56px; height: 56px; min-width: 56px;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 17px; font-weight: 900; color: var(--white);
+      position: relative; z-index: 1; background: var(--primary);
+    }
+    .tl-dot.dark { background: var(--dark); }
+    .tl-body {
+      background: var(--white); border: 2px solid var(--dark);
+      border-radius: 14px; padding: 18px 22px; flex: 1;
+    }
+    .tl-body h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .tl-body p { font-size: 13px; color: var(--gray-text); }
+    .opt-tag {
+      display: inline-block; background: var(--gray-bg); color: #999;
+      font-size: 11px; padding: 2px 8px; border-radius: 100px; margin-left: 6px;
+    }
+
+    /* ─────────────────────────────── */
+    /* SECTION 6: EXPERT               */
+    /* ─────────────────────────────── */
+    .expert { background: var(--dark); }
+    .expert-card {
+      background: var(--dark-2); border: 1px solid var(--dark-3);
+      border-radius: 16px; padding: 28px;
+      display: flex; gap: 16px; align-items: flex-start;
+    }
+    .expert-icon {
+      width: 50px; height: 50px; min-width: 50px;
+      background: rgba(28,64,244,0.2); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 22px;
+    }
+    .expert-card h3 { font-size: 15px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+    .expert-card p { font-size: 13px; color: #AAA; line-height: 1.55; }
+
+    /* ─────────────────────────────── */
+    /* SECTION 7: TARGET               */
+    /* ─────────────────────────────── */
+    .target-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 20px;
+    }
+    .t-card {
+      border: 2.5px solid var(--dark); border-radius: 16px; padding: 26px;
+    }
+    .t-card.blue { background: var(--primary); color: var(--white); }
+    .t-card.white { background: var(--white); }
+    .t-card.yellow { background: var(--yellow); }
+    .t-emoji { font-size: 30px; margin-bottom: 12px; display: block; }
+    .t-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .t-card p { font-size: 13px; line-height: 1.5; opacity: 0.75; }
+    @media (max-width: 900px) { .target-grid { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 560px) { .target-grid { grid-template-columns: 1fr; } }
+
+    /* ─────────────────────────────── */
+    /* SECTION 8: PRICING              */
+    /* ─────────────────────────────── */
+    .pricing-bg { background: var(--gray-bg); }
+    .pricing-row {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 24px; align-items: center;
+    }
+    .p-card {
+      background: var(--white); border: 2px solid var(--dark);
+      border-radius: 18px; padding: 36px 28px; text-align: center; position: relative;
+    }
+    .p-card.featured {
+      border: 3px solid var(--primary); transform: translateY(-10px);
+      box-shadow: 0 12px 40px rgba(28,64,244,0.15);
+    }
+    .pop-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--primary); color: var(--white);
+      font-size: 12px; font-weight: 700; padding: 4px 14px;
+      border-radius: 100px; white-space: nowrap;
+    }
+    .p-dur { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .p-name { font-size: 19px; font-weight: 900; margin-bottom: 20px; }
+    .p-orig { font-size: 14px; color: #BBB; text-decoration: line-through; margin-bottom: 4px; }
+    .p-price { font-size: 30px; font-weight: 900; margin-bottom: 6px; }
+    .p-disc {
+      display: inline-block; background: var(--red-light); color: var(--red);
+      font-size: 12px; font-weight: 700; padding: 3px 10px;
+      border-radius: 100px; margin-bottom: 24px;
+    }
+    .pricing-note { margin-top: 32px; text-align: center; font-size: 13px; color: #AAA; line-height: 1.9; }
+    @media (max-width: 860px) {
+      .pricing-row { grid-template-columns: 1fr; }
+      .p-card.featured { transform: none; }
+    }
+
+    /* ─────────────────────────────── */
+    /* SECTION 9: FINAL CTA            */
+    /* ─────────────────────────────── */
+    .final-cta { background: var(--primary); text-align: center; padding: 88px 32px; }
+    .final-cta h2 { font-size: clamp(26px, 4.5vw, 42px); font-weight: 900; color: var(--white); margin-bottom: 14px; }
+    .final-cta p { font-size: 17px; color: rgba(255,255,255,0.8); margin-bottom: 36px; }
+
+    /* ─────────────────────────────── */
+    /* SECTION 10: FAQ                 */
+    /* ─────────────────────────────── */
+    .faq-wrap { max-width: 720px; margin: 0 auto; }
+    .faq-item { border: 2px solid var(--dark); border-radius: 14px; margin-bottom: 12px; overflow: hidden; }
+    .faq-q {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 24px; cursor: pointer; font-size: 15px; font-weight: 600;
+      background: var(--white); user-select: none; transition: background 0.2s;
+    }
+    .faq-q:hover { background: var(--gray-bg); }
+    .faq-arrow { font-size: 20px; color: var(--primary); transition: transform 0.3s; margin-left: 16px; flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-a-inner {
+      padding: 16px 24px 20px; font-size: 14px; color: var(--gray-text);
+      line-height: 1.8; border-top: 1px solid var(--gray-border);
+    }
+
+    /* ─────────────────────────────── */
+    /* FOOTER                          */
+    /* ─────────────────────────────── */
+    footer { background: var(--dark); padding: 44px 32px; text-align: center; }
+    .footer-logo img { height: 28px; filter: brightness(0) invert(1); margin-bottom: 10px; }
+    .footer-logo-text { font-size: 18px; font-weight: 900; color: var(--white); margin-bottom: 10px; }
+    footer p { font-size: 13px; color: #555; margin-top: 6px; }
+    footer a { color: #777; text-decoration: none; }
+    footer a:hover { color: #AAA; }
+    .footer-biz-info {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 6px 0; margin-top: 20px; padding-top: 16px;
+      border-top: 1px solid #2A2A2A;
+      font-size: 12px; color: #666; line-height: 1.8;
+    }
+    .footer-biz-info span { padding: 0 10px; }
+    .footer-sep { color: #333; padding: 0 !important; }
+    .footer-biz-info a { color: #666; text-decoration: none; }
+    .footer-biz-info a:hover { color: #AAA; }
+    @media (max-width: 640px) {
+      .footer-biz-info { flex-direction: column; gap: 4px; }
+      .footer-sep { display: none; }
+      .footer-biz-info span { padding: 0; }
+    }
+
+    /* ─────────────────────────────── */
+    /* MOBILE STICKY CTA               */
+    /* ─────────────────────────────── */
+    .mob-cta {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      background: var(--primary); padding: 14px 24px;
+    }
+    .mob-cta button {
+      width: 100%; background: none; border: none;
+      color: var(--white); font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px; font-weight: 700; cursor: pointer;
+    }
+    @media (max-width: 768px) { .mob-cta { display: block; } body { padding-bottom: 56px; } }
+
+    /* ─────────────────────────────── */
+    /* MODAL                           */
+    /* ─────────────────────────────── */
+    .overlay {
+      display: none; position: fixed; inset: 0;
+      background: rgba(0,0,0,0.6); z-index: 200;
+      align-items: center; justify-content: center; padding: 20px;
+    }
+    .overlay.active { display: flex; }
+    .modal-box {
+      background: var(--white); border-radius: 20px;
+      width: 100%; max-width: 500px; max-height: 90vh;
+      overflow-y: auto; padding: 36px; position: relative;
+    }
+    .modal-hd { display: flex; justify-content: space-between; align-items: center; margin-bottom: 28px; }
+    .modal-ttl { font-size: 22px; font-weight: 900; }
+    .modal-cls {
+      width: 36px; height: 36px; background: var(--gray-bg); border: none;
+      border-radius: 50%; cursor: pointer; font-size: 18px; color: var(--gray-text);
+      display: flex; align-items: center; justify-content: center; transition: background 0.2s;
+    }
+    .modal-cls:hover { background: #DDD; }
+    .fg { margin-bottom: 18px; }
+    .fl { display: block; font-size: 14px; font-weight: 600; margin-bottom: 7px; }
+    .fl .req { color: var(--primary); }
+    .fi, .fs, .ft {
+      width: 100%; padding: 12px 16px; border: 2px solid var(--gray-border);
+      border-radius: 10px; font-family: 'Noto Sans KR', sans-serif;
+      font-size: 14px; color: var(--dark); background: var(--gray-bg);
+      transition: border-color 0.2s;
+    }
+    .fi:focus, .fs:focus, .ft:focus {
+      outline: none; border-color: var(--primary); background: var(--white);
+    }
+    .phone-row { display: flex; align-items: center; gap: 8px; }
+    .phone-sep { font-size: 18px; font-weight: 700; color: #CCC; }
+    .fs {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.8' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; cursor: pointer;
+    }
+    .ft { resize: vertical; min-height: 96px; }
+    .sub-btn {
+      width: 100%; background: var(--primary); color: var(--white); border: none;
+      border-radius: 10px; padding: 16px; font-family: 'Noto Sans KR', sans-serif;
+      font-size: 16px; font-weight: 700; cursor: pointer; transition: background 0.2s; margin-top: 6px;
+    }
+    .sub-btn:hover { background: var(--primary-dark); }
+    .sub-btn:disabled { background: #BBB; cursor: not-allowed; }
+    .success-box { display: none; text-align: center; padding: 40px 20px; }
+    .success-box.show { display: block; }
+    .success-ico { font-size: 54px; margin-bottom: 16px; }
+    .success-ttl { font-size: 22px; font-weight: 900; margin-bottom: 10px; }
+    .success-msg { font-size: 15px; color: var(--gray-text); line-height: 1.75; }
+  </style>
+</head>
+<body>
+
+<!-- ───────── NAVBAR ───────── -->
+<nav class="navbar">
+  <div class="navbar-left">
+    <div class="navbar-logo">
+      <img src="logo.png" alt="YPMFC"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span class="navbar-logo-text" style="display:none">YPMFC</span>
+    </div>
+    <span class="navbar-tagline">식품·건기식 상품기획 브랜드 창업 컨설팅</span>
+  </div>
+  <button class="btn btn-primary btn-sm" onclick="openModal()">문의하기 →</button>
+</nav>
+
+<!-- ───────── HERO ───────── -->
+<section class="hero">
+  <div class="container">
+    <span class="badge">CJ출신 전문가 · 1:1 식품 브랜드 컨설팅</span>
+    <h1 class="hero-headline">
+      식품·건기식 브랜드 창업,<br>아이디어에서 출시까지
+    </h1>
+    <p class="hero-sub">
+      OEM 공장 미팅부터 판매 채널 셋팅까지<br>
+      CJ출신 전문가가 1:1로 함께합니다.
+    </p>
+    <button class="btn btn-primary btn-xl" onclick="openModal()">컨설팅 문의하기 →</button>
+    <div class="hero-trust">
+      <span>식품공학 전공</span>
+      <span class="trust-dot"></span>
+      <span>CJ제일제당 본사 출신</span>
+      <span class="trust-dot"></span>
+      <span>크몽 의뢰 작업 603건</span>
+      <span class="trust-dot"></span>
+      <span>만족도 97%</span>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PAIN POINT ───────── -->
+<section class="pain">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:40px">
+      <span class="badge">혹시 이런 고민 있으신가요?</span>
+      <h2 class="s-title white">
+        식품 창업, 혼자 해결하려다<br>
+        <span class="accent">시간만 낭비하고 계신가요?</span>
+      </h2>
+    </div>
+    <div class="grid-2">
+      <div class="pain-card"><span class="pain-emoji">😰</span><span>OEM 공장 어디서 찾아야 할지 모르겠어요</span></div>
+      <div class="pain-card"><span class="pain-emoji">😔</span><span>식품 브랜드, 어디서 시작해야 할지 막막해요</span></div>
+      <div class="pain-card"><span class="pain-emoji">😱</span><span>상품 기획 아이디어는 있는데 어떻게 출시할지 모르겠어요</span></div>
+      <div class="pain-card"><span class="pain-emoji">🤔</span><span>기획·생산·판매채널 의사결정을 잘 내리고 있는지 궁금해요</span></div>
+    </div>
+    <div class="pain-resolve">이 모든 고민, 전문가와 함께라면 해결됩니다! 🎯</div>
+  </div>
+</section>
+
+<!-- ───────── STATS BAR ───────── -->
+<div class="stats">
+  <div class="stats-row">
+    <div class="stat">
+      <div class="stat-num">603건</div>
+      <div class="stat-lbl">크몽 의뢰 작업</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">97%</div>
+      <div class="stat-lbl">서비스 만족도</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">8+년</div>
+      <div class="stat-lbl">식품 업계 경력</div>
+    </div>
+  </div>
+</div>
+
+<!-- ───────── SERVICE ───────── -->
+<section>
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px">
+      <span class="badge">서비스 구성</span>
+      <h2 class="s-title">상품기획 컨설팅<br><span class="accent">기획부터 출시까지 원스톱</span></h2>
+    </div>
+    <div class="grid-2">
+      <div class="svc-card">
+        <span class="svc-tag">✓ 가공식품 기획</span>
+        <h3>아이디어 → 실제 판매 가능한 제품으로</h3>
+        <p>막연한 아이디어를 시장에서 팔리는 제품으로 구체화합니다. 타겟, 포지셔닝, 제품 스펙까지 함께 설계합니다.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-tag">✓ 건기식 기획</span>
+        <h3>키원료 세팅부터 상품 기획안 전문 리서치</h3>
+        <p>건강기능식품 원료 트렌드 분석부터 제형 선택, 기획안 작성까지 전문적으로 지원합니다.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-tag">✓ 정부지원사업</span>
+        <h3>정부 지원 비용 소진 가이드 안내</h3>
+        <p>청년창업사관학교 출신 경험을 바탕으로 활용 가능한 정부지원사업 방향을 제안합니다.</p>
+      </div>
+      <div class="svc-card">
+        <span class="svc-tag">✓ 판매 채널 점검</span>
+        <h3>스마트스토어·쿠팡·오프라인 채널 전략</h3>
+        <p>제품 특성에 맞는 최적의 판매 채널을 분석하고 진입 전략을 함께 수립합니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PROCESS ───────── -->
+<section class="process">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px">
+      <span class="badge">진행 프로세스</span>
+      <h2 class="s-title">이렇게 <span class="accent">진행됩니다</span></h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot">①</div>
+        <div class="tl-body"><h3>상담 신청</h3><p>문의하기를 통해 상담 신청</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dark">②</div>
+        <div class="tl-body"><h3>현황 파악 및 결제</h3><p>현재 상황 공유 후 적합한 플랜 결제</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dark">③</div>
+        <div class="tl-body">
+          <h3>상담 요청사항 사전 전달<span class="opt-tag">선택사항</span></h3>
+          <p>미팅 전 궁금한 사항 미리 전달</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dark">④</div>
+        <div class="tl-body"><h3>화상 미팅</h3><p>1:1 화상으로 심층 컨설팅 진행</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot dark">⑤</div>
+        <div class="tl-body"><h3>보고서 전달</h3><p>미팅 내용 정리 및 맞춤 보고서 제공</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── EXPERT ───────── -->
+<section class="expert">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px">
+      <h2 class="s-title white">왜 저에게 <span class="accent">맡겨야 할까요?</span></h2>
+    </div>
+    <div class="grid-2">
+      <div class="expert-card">
+        <div class="expert-icon">⭐</div>
+        <div>
+          <h3>풀사이클 현장 경험</h3>
+          <p>상품 기획부터 수출까지 식품 비즈니스 전 과정을 직접 경험했습니다.</p>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-icon">🎯</div>
+        <div>
+          <h3>청년창업사관학교(서울) 출신</h3>
+          <p>정부지원사업 활용 경험을 바탕으로 창업자에게 맞는 방향성을 제안합니다.</p>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-icon">📦</div>
+        <div>
+          <h3>식품공학 전공 기반 기획</h3>
+          <p>식품공학 전공 지식을 바탕으로 제품 기획안의 완성도를 높입니다.</p>
+        </div>
+      </div>
+      <div class="expert-card">
+        <div class="expert-icon">💬</div>
+        <div>
+          <h3>크몽 최상위 전문가</h3>
+          <p>603건의 의뢰 작업, 97% 만족도로 검증된 전문가입니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── TARGET ───────── -->
+<section>
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px">
+      <span class="badge">이런 분께 추천드려요</span>
+      <h2 class="s-title">제대로 된 식품류 창업을 목표로 하는<br><span class="accent">모든 분을 위한 1:1 컨설팅</span></h2>
+    </div>
+    <div class="target-grid">
+      <div class="t-card blue">
+        <span class="t-emoji">🚀</span>
+        <h3>처음 식품 창업을 도전하는 분</h3>
+        <p>어디서 시작할지 막막한 분께 처음부터 함께합니다</p>
+      </div>
+      <div class="t-card white">
+        <span class="t-emoji">💊</span>
+        <h3>건기식 론칭을 고려 중인 분</h3>
+        <p>원료 선정부터 기획안까지 전문적으로 지원합니다</p>
+      </div>
+      <div class="t-card yellow">
+        <span class="t-emoji">📈</span>
+        <h3>기존 제품 라인을 확장하려는 분</h3>
+        <p>신규 SKU 기획과 채널 확장 전략을 함께 수립합니다</p>
+      </div>
+      <div class="t-card white">
+        <span class="t-emoji">🏭</span>
+        <h3>OEM 공장 소싱이 막막한 분</h3>
+        <p>검증된 공장 네트워크로 적합한 파트너를 연결합니다</p>
+      </div>
+      <div class="t-card blue">
+        <span class="t-emoji">🛒</span>
+        <h3>빠르게 판매 채널에 진입하고 싶은 분</h3>
+        <p>스마트스토어, 쿠팡, 오프라인 채널 전략을 제안합니다</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── PRICING ───────── -->
+<section class="pricing-bg">
+  <div class="container">
+    <div class="text-center" style="margin-bottom:52px">
+      <span class="badge">비용 안내</span>
+      <h2 class="s-title">필요에 맞는 <span class="accent">플랜을 선택하세요</span></h2>
+    </div>
+    <div class="pricing-row">
+      <div class="p-card">
+        <div class="p-dur">30분</div>
+        <div class="p-name">단순 이슈 점검</div>
+        <div class="p-orig">100,000원</div>
+        <div class="p-price">89,000원</div>
+        <div class="p-disc">11% 할인</div>
+        <button class="btn btn-primary btn-full"
+                onclick="openModal('30분 (단순 이슈 점검)')">문의하기 →</button>
+      </div>
+      <div class="p-card featured">
+        <span class="pop-badge">⭐ 가장 많이 선택</span>
+        <div class="p-dur">1시간</div>
+        <div class="p-name">심층 실무 검토</div>
+        <div class="p-orig">200,000원</div>
+        <div class="p-price">150,000원</div>
+        <div class="p-disc">25% 할인</div>
+        <button class="btn btn-primary btn-full"
+                onclick="openModal('1시간 (심층 실무 검토)')">문의하기 →</button>
+      </div>
+      <div class="p-card">
+        <div class="p-dur">1시간 × 6회</div>
+        <div class="p-name">밀착 프로젝트</div>
+        <div class="p-orig">1,200,000원</div>
+        <div class="p-price">850,000원</div>
+        <div class="p-disc">29% 할인</div>
+        <button class="btn btn-primary btn-full"
+                onclick="openModal('1시간 × 6회 (밀착 프로젝트)')">문의하기 →</button>
+      </div>
+    </div>
+    <p class="pricing-note">
+      * 모든 플랜은 화상 미팅 + 보고서 전달 포함<br>
+      * 결제는 크몽 플랫폼을 통해 안전하게 진행됩니다
+    </p>
+  </div>
+</section>
+
+<!-- ───────── FINAL CTA ───────── -->
+<section class="final-cta">
+  <div class="container">
+    <h2>지금 바로 상담 신청하세요</h2>
+    <p>문의 양식을 통해 현황을 공유해주시면 24시간 내 답변드립니다</p>
+    <button class="btn btn-outline-white btn-xl" onclick="openModal()">컨설팅 문의하기 →</button>
+  </div>
+</section>
+
+<!-- ───────── FAQ ───────── -->
+<section>
+  <div class="container">
+    <div class="text-center" style="margin-bottom:48px">
+      <span class="badge">자주 묻는 질문</span>
+      <h2 class="s-title">궁금한 점이 <span class="accent">있으신가요?</span></h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>식품 창업 경험이 전혀 없어도 괜찮나요?</span>
+          <span class="faq-arrow">&#8964;</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            네, 처음 시작하시는 분들이 대부분입니다. 기초부터 함께 설계해드리며, 어느 단계에서 시작하셔도 맞춤형으로 지원해드립니다.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>건기식과 일반 가공식품 중 어떤 걸 만들면 좋을까요?</span>
+          <span class="faq-arrow">&#8964;</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            아이디어와 예산을 먼저 공유해주시면 두 카테고리의 장단점, 진입 비용, 규제 요건 등을 비교하여 적합한 방향을 제안드립니다.
+          </div>
+        </div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span>상담 후 바로 결정 안 해도 되나요?</span>
+          <span class="faq-arrow">&#8964;</span>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">
+            물론입니다. 부담 없이 먼저 현황을 공유해주세요. 문의 단계에서는 어떤 비용도 발생하지 않습니다.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── FOOTER ───────── -->
+<footer>
+  <div class="footer-logo">
+    <img src="logo.png" alt="YPMFC"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div class="footer-logo-text" style="display:none">YPMFC</div>
+  </div>
+  <p><a href="https://ypmfc.com">ypmfc.com</a></p>
+  <div class="footer-biz-info">
+    <span>상호: 용피엠컨설팅</span>
+    <span class="footer-sep">|</span>
+    <span>대표자: 안재용</span>
+    <span class="footer-sep">|</span>
+    <span>사업자등록번호: 550-23-02026</span>
+    <span class="footer-sep">|</span>
+    <span>이메일: <a href="mailto:contact@ypmfc.com">contact@ypmfc.com</a></span>
+  </div>
+  <p style="margin-top:16px">© 2026 YPMFC. All rights reserved.</p>
+</footer>
+
+<!-- ───────── MOBILE CTA BAR ───────── -->
+<div class="mob-cta">
+  <button onclick="openModal()">컨설팅 문의하기 →</button>
+</div>
+
+<!-- ───────── MODAL ───────── -->
+<div class="overlay" id="overlay" onclick="overlayClick(event)">
+  <div class="modal-box">
+    <div id="formArea">
+      <div class="modal-hd">
+        <span class="modal-ttl">문의 신청</span>
+        <button class="modal-cls" onclick="closeModal()">✕</button>
+      </div>
+      <form id="contactForm" onsubmit="submitForm(event)">
+        <div class="fg">
+          <label class="fl">성함 <span class="req">*</span></label>
+          <input class="fi" type="text" name="성함" placeholder="홍길동" required>
+        </div>
+        <div class="fg">
+          <label class="fl">이메일 <span class="req">*</span></label>
+          <input class="fi" type="email" name="이메일" placeholder="example@email.com" required>
+        </div>
+        <div class="fg">
+          <label class="fl">연락처 <span class="req">*</span></label>
+          <div class="phone-row">
+            <input class="fi" id="p1" type="text" maxlength="3" placeholder="010"
+                   oninput="this.value=this.value.replace(/\D/g,'');if(this.value.length>=3)document.getElementById('p2').focus()"
+                   style="width:76px;flex-shrink:0;text-align:center">
+            <span class="phone-sep">-</span>
+            <input class="fi" id="p2" type="text" maxlength="4" placeholder="1234"
+                   oninput="this.value=this.value.replace(/\D/g,'');if(this.value.length>=4)document.getElementById('p3').focus()"
+                   style="text-align:center">
+            <span class="phone-sep">-</span>
+            <input class="fi" id="p3" type="text" maxlength="4" placeholder="5678"
+                   oninput="this.value=this.value.replace(/\D/g,'')"
+                   style="text-align:center">
+          </div>
+        </div>
+        <div class="fg">
+          <label class="fl">문의 상품 <span class="req">*</span></label>
+          <select class="fs" id="productSelect" name="문의상품" required>
+            <option value="">선택해주세요</option>
+            <option value="30분 (단순 이슈 점검)">30분 (단순 이슈 점검) — 89,000원</option>
+            <option value="1시간 (심층 실무 검토)">1시간 (심층 실무 검토) — 150,000원</option>
+            <option value="1시간 × 6회 (밀착 프로젝트)">1시간 × 6회 (밀착 프로젝트) — 850,000원</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="fl">기타 전달사항</label>
+          <textarea class="ft" name="기타전달사항"
+                    placeholder="현재 상황이나 궁금한 점을 자유롭게 적어주세요."></textarea>
+        </div>
+        <button type="submit" class="sub-btn" id="subBtn">문의 신청하기</button>
+      </form>
+    </div>
+    <div class="success-box" id="successBox">
+      <div class="success-ico">✅</div>
+      <div class="success-ttl">문의가 접수되었습니다!</div>
+      <p class="success-msg">
+        24시간 내에 입력하신 이메일 또는<br>
+        연락처로 답변드리겠습니다.<br><br>감사합니다 🙏
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ── Modal ── */
+  function openModal(plan) {
+    document.getElementById('overlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    if (plan) document.getElementById('productSelect').value = plan;
+  }
+  function closeModal() {
+    document.getElementById('overlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function overlayClick(e) {
+    if (e.target === document.getElementById('overlay')) closeModal();
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  /* ── FAQ ── */
+  function toggleFaq(el) {
+    const item = el.parentElement;
+    const ans  = item.querySelector('.faq-a');
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i) {
+      i.classList.remove('open');
+      i.querySelector('.faq-a').style.maxHeight = '0';
+    });
+    if (!open) {
+      item.classList.add('open');
+      ans.style.maxHeight = (ans.scrollHeight + 40) + 'px';
+    }
+  }
+
+  /* ── Formspree Submit ── */
+  async function submitForm(e) {
+    e.preventDefault();
+    var btn = document.getElementById('subBtn');
+    btn.disabled = true;
+    btn.textContent = '전송 중...';
+
+    var phone = [
+      document.getElementById('p1').value,
+      document.getElementById('p2').value,
+      document.getElementById('p3').value
+    ].join('-');
+
+    var form = document.getElementById('contactForm');
+    var data = {
+      '성함':        form.querySelector('[name="성함"]').value,
+      '이메일':      form.querySelector('[name="이메일"]').value,
+      '연락처':      phone,
+      '문의상품':    form.querySelector('[name="문의상품"]').value,
+      '기타전달사항': form.querySelector('[name="기타전달사항"]').value || '없음'
+    };
+
+    try {
+      var res = await fetch('https://formspree.io/f/mlgvvvbb', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        document.getElementById('formArea').style.display = 'none';
+        document.getElementById('successBox').classList.add('show');
+      } else { throw new Error(); }
+    } catch (_) {
+      btn.disabled = false;
+      btn.textContent = '문의 신청하기';
+      alert('전송 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.');
+    }
+  }
+</script>
+</body>
+</html>
